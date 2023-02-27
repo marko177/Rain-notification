@@ -18,7 +18,7 @@ request_weather = requests.get("https://api.openweathermap.org/data/2.5/onecall?
 
 weather_data = request_weather.json()
 
-if [i["weather"][0]["id"] for i in weather_data["hourly"][:12] if i["weather"][0]["id"] < 700]:
+if [weather_id["weather"][0]["id"] for weather_id in weather_data["hourly"][:12] if weather_id["weather"][0]["id"] < 700]:
     proxy_client = TwilioHttpClient()
     proxy_client.session.proxies = {'https': os.environ['https_proxy']}
 
